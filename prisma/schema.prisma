@@ -28,6 +28,7 @@ enum COURSEenum {
 model User {
   id          String   @id @default(uuid())
   email       String   @unique
+  name        String   
   password    String
   phone       String?
   major       MAJORenum
