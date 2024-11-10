@@ -16,6 +16,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { Studentcoursetable } from "@/components/ui/studentcoursetable"
 
 export default function Page() {
   return (
@@ -43,11 +44,11 @@ export default function Page() {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3 "> 
-            <div className=" aspect-video rounded-xl bg-muted/50" > <Mycomponent text1={"User Count"} text2={"Live Count"} usercount={"23"}/>  </div>
-            <div className=" aspect-video rounded-xl bg-muted/50" > <Mycomponent text1={"User Online"} text2={"Live Count"} usercount={"30"}/> </div>
+            <div className=" aspect-video rounded-xl bg-muted/50" > <Mycomponent text1={"My Courses"} text2={"Live Count"} usercount={"23"}/>  </div>
+            <div className=" aspect-video rounded-xl bg-muted/50" > <Mycomponent text1={"Upcoming Courses"} text2={"Live Count"} usercount={"30"}/> </div>
             <div className=" aspect-video rounded-xl bg-muted/50" > <Mycomponent text1={"Study Groups"} text2={"Live Count"} usercount={"5"}/> </div>
           </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min"> <DataTable /> </div>
+          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min"> <Studentcoursetable /> </div>
         </div>
       </SidebarInset>
     </SidebarProvider>

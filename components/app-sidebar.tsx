@@ -19,12 +19,12 @@ import {
 const data = {
   navMain: [
     {
-      title: "Getting Started",
-      url: "#",
+      title: "ABC Page",
+      url: "/abc",
       items: [
         {
           title: "Installation",
-          url: "#",
+          url: "https://google.com",
         },
         {
           title: "Project Structure",
@@ -39,52 +39,9 @@ const data = {
         {
           title: "Routing",
           url: "#",
+          isActive:true
         },
-        {
-          title: "Data Fetching",
-          url: "#",
-          isActive: true,
-        },
-        {
-          title: "Rendering",
-          url: "#",
-        },
-        {
-          title: "Caching",
-          url: "#",
-        },
-        {
-          title: "Styling",
-          url: "#",
-        },
-        {
-          title: "Optimizing",
-          url: "#",
-        },
-        {
-          title: "Configuring",
-          url: "#",
-        },
-        {
-          title: "Testing",
-          url: "#",
-        },
-        {
-          title: "Authentication",
-          url: "#",
-        },
-        {
-          title: "Deploying",
-          url: "#",
-        },
-        {
-          title: "Upgrading",
-          url: "#",
-        },
-        {
-          title: "Examples",
-          url: "#",
-        },
+        
       ],
     },
     {
@@ -94,27 +51,7 @@ const data = {
         {
           title: "Components",
           url: "#",
-        },
-        {
-          title: "File Conventions",
-          url: "#",
-        },
-        {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
-        },
+        }
       ],
     },
     {
@@ -124,23 +61,7 @@ const data = {
         {
           title: "Accessibility",
           url: "#",
-        },
-        {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
-          url: "#",
-        },
+        }
       ],
     },
     {
@@ -168,8 +89,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <GalleryVerticalEnd className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">Documentation</span>
-                  <span className="">v1.0.0</span>
+                  <span className="font-semibold">Admin Panel - UTM Study Group Finder</span>
                 </div>
               </a>
             </SidebarMenuButton>
