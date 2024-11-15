@@ -22,6 +22,7 @@ const Login = () => {
    const initialState = {
     email: '',
     password: ''
+    
   }
   const [state, formAction, isPending] = useActionState(login, initialState);
   return (
