@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
@@ -10,9 +11,19 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useActionState, useState } from "react"
+import { login } from "../app/actions"
 
-export function LoginForm() {
+
+export async function LoginForm() {
+ // const [showToast, setShowToast] = useState<{ message: string; visible: boolean }>({ message: '', visible: false });
+  const initialState = {
+    email: '',
+    password: ''
+  }
+  const [state, formAction, isPending] = useActionState(login, initialState);
   return (
+    <form action={formAction}>
     <Card className="mx-auto max-w-sm">
       <CardHeader>
         <CardTitle className="text-2xl">Login</CardTitle>
@@ -27,6 +38,7 @@ export function LoginForm() {
             <Input
               id="email"
               type="email"
+              name="email"
               placeholder="m@example.com"
               required
             />
@@ -34,18 +46,13 @@ export function LoginForm() {
           <div className="grid gap-2">
             <div className="flex items-center">
               <Label htmlFor="password">Password</Label>
-              <Link href="#" className="ml-auto inline-block text-sm underline">
-                Forgot your password?
-              </Link>
             </div>
-            <Input id="password" type="password" required />
+            <Input id="password" type="password" name="password" required />
           </div>
           <Button type="submit" className="w-full">
             Login
           </Button>
-          <Button variant="outline" className="w-full">
-            Login with Google
-          </Button>
+          
         </div>
         <div className="mt-4 text-center text-sm">
           Don&apos;t have an account?{" "}
@@ -55,5 +62,6 @@ export function LoginForm() {
         </div>
       </CardContent>
     </Card>
+    </form>
   )
 }

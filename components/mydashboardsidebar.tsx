@@ -19,6 +19,10 @@ import {
 const data = {
   navMain: [
     {
+      title: "Profile",
+      url: "#",
+    },
+    {
       title: "Groups",
       url: "#",
     },

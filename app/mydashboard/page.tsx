@@ -21,7 +21,7 @@ export async function getNumberOfGroupsForUser(userId: string) {
     where: {
       members: {
         some: {
-          id: userId, // Check if the user is in any of the groups
+          id: userId,
         },
       },
     },
@@ -76,7 +76,7 @@ export default async function Page() {
           }
           <br/>
           <div className="grid auto-rows-min gap-4 md:grid-cols-3 "> 
-            <div className=" aspect-video rounded-xl bg-muted/50 " > <Mycomponent text1={"My Courses"} text2={"Live Count"} usercount={getNumberOfGroupsForUser()}/>  </div>
+            { <div className=" aspect-video rounded-xl bg-muted/50 " > <Mycomponent text1={"My Courses"} text2={"Live Count"} usercount={getNumberOfGroupsForUser()}/>  </div> }
             <div className=" aspect-video rounded-xl bg-muted/50" > <Mycomponent text1={"Study Groups Available"} text2={"Live Count"} usercount={getNumberOfGroups()}/> </div>
             <div className=" aspect-video rounded-xl bg-muted/50" >  <Mycomponent text1={"Number Of Users"} text2={"Live Count"} usercount={getNumberOfUsers()}/></div>
           </div>
