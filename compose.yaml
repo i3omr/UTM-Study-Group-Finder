@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:14-alpine
+    container_name: mydb
+    environment:
+      POSTGRES_USER: Hasan
+      POSTGRES_PASSWORD: Hasan123
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+  # You can add other services like your app container here
+  
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  mynetwork:
+    driver: bridge
