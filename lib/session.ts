@@ -44,7 +44,7 @@ export async function verifySession() {
     const authcookie = (await cookies()).get(cookie.name)?.value
     const session = await decrypt(authcookie as string | Uint8Array)
     if (!session?.userId) {
-        redirect('/login')
+        redirect('/auth/login')
     }
     return { userId: session.userId }
 
@@ -61,5 +61,5 @@ export async function checkSessionExistOnly() {
 export async function deleteSession() {
 
     (await cookies()).delete(cookie.name)
-    redirect('/login')
+    redirect('/auth/login')
 }

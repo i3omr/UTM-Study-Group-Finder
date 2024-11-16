@@ -1,4 +1,4 @@
-'use client'
+/*'use client'
 import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
@@ -69,4 +69,17 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login*/
+
+
+import SignInForm from "@/components/ui/form/SignInForm";
+
+const page = () => {
+  return (
+    <div className='w-full'>
+      <SignInForm />
+    </div>
+  );
+};
+
+export default page;

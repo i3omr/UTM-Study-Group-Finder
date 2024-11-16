@@ -33,7 +33,7 @@ export async function POST(req: Request){
     }*/
     
     
-    import { createUser } from "@/prisma/user/userqueries";
+import { createUser } from "@/prisma/user/userqueries";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {

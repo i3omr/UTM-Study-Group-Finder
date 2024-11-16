@@ -58,7 +58,7 @@ const SignUpForm = () => {
     })
 
     if (response.ok){
-        router.push('/login');
+        router.push('/auth/login');
     }else{
       console.error('registration failed');
     }
@@ -68,19 +68,7 @@ const SignUpForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
         <div className='space-y-2'>
-          <FormField
-            control={form.control}
-            name='username'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input placeholder='johndoe' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+      
           <FormField
             control={form.control}
             name='email'
@@ -94,6 +82,20 @@ const SignUpForm = () => {
               </FormItem>
             )}
           />
+
+        <FormField
+            control={form.control}
+            name='username'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Major</FormLabel>
+                <FormControl>
+                  <Input placeholder='Student' {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          /> 
           <FormField
             control={form.control}
             name='password'
@@ -139,7 +141,7 @@ const SignUpForm = () => {
       <GoogleSignInButton>Sign up with Google</GoogleSignInButton>
       <p className='text-center text-sm text-gray-600 mt-2'>
         If you don&apos;t have an account, please&nbsp;
-        <Link className='text-blue-500 hover:underline' href='/sign-in'>
+        <Link className='text-blue-500 hover:underline' href='/auth/login'>
           Sign in
         </Link>
       </p>
