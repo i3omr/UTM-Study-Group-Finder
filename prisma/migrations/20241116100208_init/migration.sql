@@ -2,7 +2,7 @@
 CREATE TYPE "ROLEenum" AS ENUM ('student', 'admin');
 
 -- CreateEnum
-CREATE TYPE "MAJORenum" AS ENUM ('ComputerScienceSoftwareEngineering', 'ComputerScienceNetworkAndSecurity');
+CREATE TYPE "MAJORenum" AS ENUM ('ComputerScienceSoftwareEngineering', 'ComputerScienceNetworkAndSecurity', 'ComputerScienceMultiMedia');
 
 -- CreateEnum
 CREATE TYPE "COURSEenum" AS ENUM ('ArtificialIntelligence', 'Network');
@@ -11,6 +11,7 @@ CREATE TYPE "COURSEenum" AS ENUM ('ArtificialIntelligence', 'Network');
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "phone" TEXT,
     "major" "MAJORenum" NOT NULL,
