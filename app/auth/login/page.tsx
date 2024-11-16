@@ -1,4 +1,4 @@
-/*'use client'
+'use client'
 import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useActionState, useState } from "react"
-import { login } from "../actions"
+import { login } from "@/app/actions"
 
 
 import React from 'react'
@@ -22,7 +22,6 @@ const Login = () => {
    const initialState = {
     email: '',
     password: ''
-    
   }
   const [state, formAction, isPending] = useActionState(login, initialState);
   return (
@@ -58,7 +57,7 @@ const Login = () => {
           
         </div>
         <div className="mt-4 text-center text-sm">
-          Don&apos;t have an account - {" "}
+          Don&apos;t have an account?{" "}
           <Link href="#" className="underline">
             Sign up
           </Link>
@@ -69,17 +68,4 @@ const Login = () => {
   )
 }
 
-export default Login*/
-
-
-import SignInForm from "@/components/ui/form/SignInForm";
-
-const page = () => {
-  return (
-    <div className='w-full'>
-      <SignInForm />
-    </div>
-  );
-};
-
-export default page;
+export default Login

@@ -15,3 +15,39 @@ export async function createUser(data: CreateUserInput) {
     throw error;
   }
 }
+
+
+export async function getNumberOfUsers() {
+  const userCount = await prisma.user.count();
+  return userCount;
+}
+
+export async function getNumberOfGroups() {
+  const groupCount = await prisma.group.count();
+  return groupCount;
+}
+
+export async function getNumberOfGroupsForUser(userId: string) {
+  const groupCount = await prisma.group.count({
+    where: {
+      members: {
+        some: {
+          id: userId,
+        },
+      },
+    },
+  });
+
+  return groupCount;
+}
+
+export async function getUserInfo(userId:string){
+  const userInfo = await prisma.user.findUnique({
+    where:{
+      id: userId
+    }, include:{
+      groups: true,
+    }
+  })
+  return userInfo;
+}

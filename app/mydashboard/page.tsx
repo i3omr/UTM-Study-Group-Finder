@@ -1,35 +1,6 @@
 import { Mydashboardsidebar } from "@/components/mydashboardsidebar"
 import { prisma } from "@/util/prisma"
 
-async function getUsers() {
-  const users= await prisma.user.findMany({})
-  return users;
-}
-
-export async function getNumberOfUsers() {
-  const userCount = await prisma.user.count();
-  return userCount;
-}
-
-export async function getNumberOfGroups() {
-  const groupCount = await prisma.group.count();
-  return groupCount;
-}
-
-export async function getNumberOfGroupsForUser(userId: string) {
-  const groupCount = await prisma.group.count({
-    where: {
-      members: {
-        some: {
-          id: userId,
-        },
-      },
-    },
-  });
-
-  return groupCount;
-}
-
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -50,10 +21,12 @@ import {
 import { Studentcoursetable } from "@/components/ui/studentcoursetable"
 import Useroverview from "@/components/ui/useroverview";
 import { group } from "console";
+import { getNumberOfGroups, getNumberOfGroupsForUser, getNumberOfUsers, getUserInfo } from "@/prisma/user/userqueries"
 
 
 export default async function Page() {
-  const users = await getUsers();
+  
+  const user = await getUserInfo("b3590661-7620-418e-9df7-17bc01dc562e");
   return (
     <SidebarProvider>
       <Mydashboardsidebar />
@@ -68,15 +41,13 @@ export default async function Page() {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           {
-            users.map((user)=>{
-              return(
-                <Useroverview name ={user.name} /*email={user.email} major={user.major}*/ />
-              )
-            })
+            
+             <Useroverview name ={user?.name?? "Guest"} /*email={user.email} major={user.major}*/ />
+
           }
           <br/>
           <div className="grid auto-rows-min gap-4 md:grid-cols-3 "> 
-            { <div className=" aspect-video rounded-xl bg-muted/50 " > <Mycomponent text1={"My Courses"} text2={"Live Count"} usercount={getNumberOfGroupsForUser()}/>  </div> }
+            { <div className=" aspect-video rounded-xl bg-muted/50 " > <Mycomponent text1={"My Active Study Groups"} text2={"Live Count"} usercount={getNumberOfGroupsForUser("b3590661-7620-418e-9df7-17bc01dc562e")}/>  </div> }
             <div className=" aspect-video rounded-xl bg-muted/50" > <Mycomponent text1={"Study Groups Available"} text2={"Live Count"} usercount={getNumberOfGroups()}/> </div>
             <div className=" aspect-video rounded-xl bg-muted/50" >  <Mycomponent text1={"Number Of Users"} text2={"Live Count"} usercount={getNumberOfUsers()}/></div>
           </div>
