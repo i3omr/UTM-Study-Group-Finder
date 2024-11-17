@@ -28,7 +28,7 @@ const data = {
     },
     {
       title: "Logout",
-      url: "#",
+      url: "/logout",
     }
   ],
 }
