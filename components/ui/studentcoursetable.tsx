@@ -1,6 +1,8 @@
-"use client"
+"use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation"; // Import useRouter for navigation
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"; // Import table components from your UI library
+import { Button } from "@/components/ui/button"; // Import Button component
 
 type Group = {
   id: string;
@@ -14,6 +16,8 @@ interface StudentcoursetableProps {
 }
 
 export const Studentcoursetable: React.FC<StudentcoursetableProps> = ({ groups }) => {
+  const router = useRouter(); // Initialize the router
+
   // State to manage sorting configuration
   const [sortConfig, setSortConfig] = useState<{
     key: keyof Group; // Explicitly use keys of the Group type
@@ -52,23 +56,29 @@ export const Studentcoursetable: React.FC<StudentcoursetableProps> = ({ groups }
     });
   };
 
+  // Function to handle the "View" button click
+  const handleView = (groupId: string) => {
+    router.push(`/group/${groupId}`); // Redirect to the group-specific page
+  };
+
   return (
-    <div className="rounded-md border ">
+    <div className="rounded-md border">
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead onClick={() => handleSort("course")} className=" font-bold">
+            <TableHead onClick={() => handleSort("course")} className="font-bold">
               Course Name
               {sortConfig.key === "course" && (sortConfig.direction === "ascending" ? " ▲" : " ▼")}
             </TableHead>
-            <TableHead onClick={() => handleSort("name")} className=" font-bold">
+            <TableHead onClick={() => handleSort("name")} className="font-bold">
               Group Name
               {sortConfig.key === "name" && (sortConfig.direction === "ascending" ? " ▲" : " ▼")}
             </TableHead>
-            <TableHead onClick={() => handleSort("description")} className=" font-bold">
+            <TableHead onClick={() => handleSort("description")} className="font-bold">
               Group Description
               {sortConfig.key === "description" && (sortConfig.direction === "ascending" ? " ▲" : " ▼")}
             </TableHead>
+            <TableHead className="font-bold">Actions</TableHead> {/* Add a new column for actions */}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -78,11 +88,17 @@ export const Studentcoursetable: React.FC<StudentcoursetableProps> = ({ groups }
                 <TableCell>{group.course}</TableCell>
                 <TableCell>{group.name}</TableCell>
                 <TableCell>{group.description ?? "No description available"}</TableCell>
+                <TableCell>
+                  {/* Add a "View" button */}
+                  <Button onClick={() => handleView(group.id)} className="text-blue-500 bg-white hover:bg-gray-300">
+                    View
+                  </Button>
+                </TableCell>
               </TableRow>
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={3} className="h-24 text-center">
+              <TableCell colSpan={4} className="h-24 text-center">
                 No groups available
               </TableCell>
             </TableRow>

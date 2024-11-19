@@ -2,24 +2,13 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { deleteSession } from "@/lib/session";
 
 const Logout = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const logout = async () => {
-      // Call the API route to clear the cookie
-      await fetch("/api/logout", { method: "GET" });
-
-      // Clear client-side storage
-      localStorage.clear();
-      sessionStorage.clear();
-
-      // Redirect to login page
-      router.push("/auth/login");
-    };
-
-    logout();
+    deleteSession();
   }, [router]);
 
   return (
