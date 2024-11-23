@@ -19,14 +19,24 @@ import { useRouter } from 'next/navigation';
 
 const FormSchema = z
   .object({
-    username: z.string().min(1, 'Username is required').max(100),
+    name: z.string().min(1, 'Name is required'),
     email: z.string().min(1, 'Email is required').email('Invalid email'),
     password: z
       .string()
       .min(1, 'Password is required')
       .min(8, 'Password must have than 8 characters'),
     confirmPassword: z.string().min(1, 'Password confirmation is required'),
+    major: z.string().min(1, 'Major is required'),
+    phoneNumber: z.string().min(1, 'phone number is required'),
+    gender:z.string().min(1, 'gender is required'),
   })
+  
+
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ['confirmPassword'],
+    message: 'Password do not match',
+  })
+
   .refine((data) => data.password === data.confirmPassword, {
     path: ['confirmPassword'],
     message: 'Password do not match',
@@ -37,38 +47,75 @@ const SignUpForm = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: '',
+      name: '',
       email: '',
       password: '',
       confirmPassword: '',
+      phoneNumber: '',
+      major: '',
+      gender: '',
     },
   });
 
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
-    const response = await fetch('/api/user', {
-      method: 'POST',
-      headers: {
-        'Content-Type' : 'application/json'
-      },
-      body: JSON.stringify({
-        username: values.username,
-        email: values.email,
-        password: values.password
-      })
-    })
-
-    if (response.ok){
+    try {
+      const response = await fetch('/api/user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          password: values.password,
+          phoneNumber: values.phoneNumber,
+          major: values.major,
+          gender: values.gender,
+        }),
+      });
+  
+      if (response.ok) {
         router.push('/auth/login');
-    }else{
-      console.error('registration failed');
+      } else {
+        const errorData = await response.json();
+        if (errorData.code === 'USER_EXISTS') {
+          alert('An account with this email already exists.');
+        } else {
+          alert(errorData.message || 'Registration failed');
+        }
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error("Error in registration:", error.message);
+        alert(error.message || "An error occurred while registering.");
+      } else {
+        console.error("Unknown error:", error);
+        alert("An unknown error occurred.");
+      }
     }
   };
+  
+  
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
         <div className='space-y-2'>
       
+
+        <FormField
+            control={form.control}
+            name='name'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input placeholder='name' {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <FormField
             control={form.control}
             name='email'
@@ -82,20 +129,59 @@ const SignUpForm = () => {
               </FormItem>
             )}
           />
-
-        <FormField
+           <FormField
             control={form.control}
-            name='username'
+            name='phoneNumber'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Major</FormLabel>
+                <FormLabel>Phone number</FormLabel>
                 <FormControl>
-                  <Input placeholder='Student' {...field} />
+                  <Input placeholder='Phone number' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
-          /> 
+          />
+
+<FormField
+  control={form.control}
+  name="major"
+  render={({ field }) => (
+    <FormItem>
+      <FormLabel>Major</FormLabel>
+      <br/>
+      <FormControl>
+        <select {...field} className="input">
+          <option value="">Select your major</option>
+          <option value="ComputerScienceSoftwareEngineering">Computer Science - Software Engineering</option>
+          <option value="ComputerScienceNetworkAndSecurity">Computer Science - Network and Security</option>
+          <option value="ComputerScienceMultiMedia">Computer Science - MultiMedia</option>
+        </select>
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+<FormField
+  control={form.control}
+  name="gender"
+  render={({ field }) => (
+    <FormItem>
+      <FormLabel>Gender</FormLabel>
+      <br/>
+      <FormControl>
+        <select {...field} className="input">
+          <option value="">Select your gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
+
           <FormField
             control={form.control}
             name='password'
@@ -138,7 +224,6 @@ const SignUpForm = () => {
       <div className='mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400'>
         or
       </div>
-      <GoogleSignInButton>Sign up with Google</GoogleSignInButton>
       <p className='text-center text-sm text-gray-600 mt-2'>
         If you don&apos;t have an account, please&nbsp;
         <Link className='text-blue-500 hover:underline' href='/auth/login'>
@@ -150,3 +235,7 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
+
+
+
+

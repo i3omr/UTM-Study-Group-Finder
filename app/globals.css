@@ -86,3 +86,35 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.centered-container {
+  display: flex;
+  justify-content: center;  /* Centers horizontally */
+  align-items: center;      /* Centers vertically */
+  height: 100vh;            /* Make the container take full height */
+}
+.centered-container {
+  display: flex;
+  justify-content: center;  /* Centers children horizontally */
+  align-items: center;      /* Centers children vertically */
+  flex-direction: column;   /* Stacks children vertically */
+  height: 100vh;
+}
+
+/* Container styling */
+.signup-container {
+  display: flex;
+  justify-content: center;  /* Centers the form horizontally */
+  align-items: center;      /* Centers the form vertically */
+  height:auto;            /* Full viewport height */
+  flex-direction: column;   /* Ensures the form elements are stacked */
+}
+
+/* Form styling */
+.signup-form {
+  width: 100%;
+  max-width: 400px;         /* Restrict width of the form */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}

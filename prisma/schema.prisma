@@ -3,11 +3,39 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql" // or your preferred database provider
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-// Enums
+model User {
+  userId      String        @id  @default(uuid())
+  email       String        @unique
+  name        String
+  password    String
+  phoneNumber String?
+  gender      String
+  major       String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  role        ROLEenum      @default(student)
+  groups      Group[]       @relation("GroupMembers")
+}
+
+
+
+model Group {
+  id          String     @id @default(uuid())
+  course      COURSEenum
+  description String?
+  name        String
+  groupDate   DateTime
+  singleTime  Boolean
+  major       MAJORenum
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  members     User[]     @relation("GroupMembers")
+}
+
 enum ROLEenum {
   student
   admin
@@ -22,31 +50,4 @@ enum MAJORenum {
 enum COURSEenum {
   ArtificialIntelligence
   Network
-}
-
-// Models
-model User {
-  id          String   @id @default(uuid())
-  email       String   @unique
-  name        String 
-  password    String
-  phone       String?
-  major       MAJORenum
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  role        ROLEenum @default(student)
-  groups      Group[]  @relation("GroupMembers")
-}
-
-model Group {
-  id          String    @id @default(uuid())
-  course      COURSEenum
-  description String?
-  name        String
-  members     User[]    @relation("GroupMembers")
-  groupDate   DateTime
-  singleTime  Boolean
-  major       MAJORenum
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
 }

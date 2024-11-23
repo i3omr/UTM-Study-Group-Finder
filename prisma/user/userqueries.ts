@@ -9,7 +9,7 @@ export async function createUser(data: CreateUserInput) {
   let hash = hashSync(data.password, salt);
   
   try {
-    return await prisma.user.create({ data: { ...data, password: hash, role: "student", name:"Omar",major:"ComputerScienceNetworkAndSecurity"}});
+    return await prisma.user.create({ data: { ...data, password: hash, role: "student", name:"Omar",major:"ComputerScienceNetworkAndSecurity",phoneNumber:"",gender:"",}});
   } catch (error) {
     console.error("Failed to create user in database");
     throw error;
@@ -32,7 +32,7 @@ export async function getNumberOfGroupsForUser(userId: string) {
     where: {
       members: {
         some: {
-          id: userId,
+          userId: userId,
         },
       },
     },
@@ -44,7 +44,7 @@ export async function getNumberOfGroupsForUser(userId: string) {
 export async function getUserInfo(userId:string){
   const userInfo = await prisma.user.findUnique({
     where:{
-      id: userId
+      userId: userId
     }, include:{
       groups: true,
     }
