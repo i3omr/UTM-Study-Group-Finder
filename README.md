@@ -39,3 +39,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 myDashboard: [/mydashboard](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/mydashboard)
 
 logout: [/logout](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/logout)
+
+## Member 2 : Hasan Hatem Hasan A22EC0013
+Sign-up : [/sign-up](https://github.com/i3omr/UTM-Study-Group-Finder/tree/HASAN_HATEM_HATEM_A22EC0013/app/auth/sign-up)
