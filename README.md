@@ -6,6 +6,8 @@ myDashboard: [/mydashboard](https://github.com/i3omr/UTM-Study-Group-Finder/tree
 
 logout: [/logout](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/logout)
 
+dashboard sidebar: [/mydashboardsidebar.tsx](/https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/components/mydashboardsidebar.tsx)
+
 ## Member 2 : Hasan Hatem Hasan A22EC0013
 sign-up form : [/SignUpForm](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/components/ui/form/SignUpForm.tsx)
 
