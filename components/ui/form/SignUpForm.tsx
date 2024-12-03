@@ -14,7 +14,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../input';
 import { Button } from '../button';
 import Link from 'next/link';
-import GoogleSignInButton from '../GoogleSignInButton';
 import { useRouter } from 'next/navigation';
 
 const FormSchema = z
@@ -37,10 +36,6 @@ const FormSchema = z
     message: 'Password do not match',
   })
 
-  .refine((data) => data.password === data.confirmPassword, {
-    path: ['confirmPassword'],
-    message: 'Password do not match',
-  });
 
 const SignUpForm = () => {
   const router = useRouter();
