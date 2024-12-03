@@ -2,13 +2,15 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Sprint 1:
 ## Member 1 : Omar Mohammed Rezk A22EC0026
-myDashboard: [/mydashboard](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/mydashboard)
+myDashboard: [app/mydashboard](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/mydashboard)
 
-logout: [/logout](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/logout)
+logout: [app/logout](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/logout)
 
-logout api: [/api/logout](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/api/logout)
+logout api: [app/api/logout](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/api/logout)
 
-dashboard sidebar: [/mydashboardsidebar.tsx](/https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/components/mydashboardsidebar.tsx)
+dashboard sidebar: [components/mydashboardsidebar.tsx](/https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/components/mydashboardsidebar.tsx)
+
+student course table: [components/ui/studentcoursetable.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/components/ui/studentcoursetable.tsx)
 
 ## Member 2 : Hasan Hatem Hasan A22EC0013
 sign-up form : [/SignUpForm](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/components/ui/form/SignUpForm.tsx)
