@@ -12,6 +12,8 @@ dashboard sidebar: [components/mydashboardsidebar.tsx](/https://github.com/i3omr
 
 student course table: [components/ui/studentcoursetable.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/components/ui/studentcoursetable.tsx)
 
+db prisma schema: [schema.prisma](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/prisma/schema.prisma)
+
 ## Member 2 : Hasan Hatem Hasan A22EC0013
 sign-up form : [/SignUpForm](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/components/ui/form/SignUpForm.tsx)
 
