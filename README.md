@@ -6,7 +6,7 @@ myDashboard: [/mydashboard](https://github.com/i3omr/UTM-Study-Group-Finder/tree
 
 logout: [/logout](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/logout)
 
-logout api: [/api/logout](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/api/logout)
+logout api: [/api/logout](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/api/logout)
 
 dashboard sidebar: [/mydashboardsidebar.tsx](/https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/components/mydashboardsidebar.tsx)
 
