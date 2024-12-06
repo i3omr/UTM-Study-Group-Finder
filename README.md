@@ -21,6 +21,9 @@ Sign-up : [/sign-up](https://github.com/i3omr/UTM-Study-Group-Finder/tree/HASAN_
 
 Api-user-file : [/user](https://github.com/i3omr/UTM-Study-Group-Finder/tree/HASAN_HATEM_HATEM_A22EC0013/app/api/user)
 
+db prisma schema: [schema.prisma](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/prisma/schema.prisma)
+
+
 ## Member 3 : Ahmed Amir Elsayed A22EC0007
 groups page: []()
 
