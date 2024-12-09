@@ -4,10 +4,6 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ## Member 1 : Omar Mohammed Rezk A22EC0026
 myDashboard: [app/mydashboard](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/mydashboard)
 
-logout: [app/logout](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/logout)
-
-logout api: [app/api/logout](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/api/logout)
-
 dashboard sidebar: [components/mydashboardsidebar.tsx](/https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/components/mydashboardsidebar.tsx)
 
 student course table: [components/ui/studentcoursetable.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/components/ui/studentcoursetable.tsx)
