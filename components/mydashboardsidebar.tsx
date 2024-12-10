@@ -20,7 +20,7 @@ const data = {
   navMain: [
     {
       title: "Profile",
-      url: "#",
+      url: "/profile",
     },
     {
       title: "Groups",

@@ -26,16 +26,18 @@ enum COURSEenum {
 
 // Models
 model User {
-  id          String   @id @default(uuid())
-  email       String   @unique
-  name        String 
-  password    String
-  phone       String?
-  major       MAJORenum
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  role        ROLEenum @default(student)
-  groups      Group[]  @relation("GroupMembers")
+  id                String    @id @default(cuid())
+  email             String    @unique
+  name              String
+  password          String
+  role              String
+  bio               String?   @db.Text
+  schedule          String?   @db.Text
+  groups            Group[]   @relation("GroupMembers")
+  phone             String?
+  major             MAJORenum
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 }
 
 model Group {
