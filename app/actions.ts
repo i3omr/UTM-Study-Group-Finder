@@ -21,7 +21,7 @@ export async function login(formData: FormData, state: any):Promise<any> {
      }
      const baseUrl='http://localhost:4000/' 
  
-     await createSession(potentialUser.id,potentialUser.role)
+     await createSession(potentialUser.userId,potentialUser.role)
      return { success: 'okay',potentialUser }
    }
  

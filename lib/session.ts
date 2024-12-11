@@ -38,17 +38,32 @@ export async function createSession(userId: string,role:string) {
 
     (await cookies()).set(cookie.name, session, { ...cookie.options, sameSite: 'lax', expires })
 
-    role==='student'?redirect(`/mydashboard`):redirect(`/user/${userId}`)
+    role==='student'?redirect(`/mydashboard`):redirect(`/api/user${userId}`)
 }
-export async function verifySession() {
-    const authcookie = (await cookies()).get(cookie.name)?.value
-    const session = await decrypt(authcookie as string | Uint8Array)
-    if (!session?.userId) {
-        redirect('/auth/login')
-    }
-    return { userId: session.userId }
 
-}
+export async function verifySession() {
+    const authcookie = (await cookies()).get(cookie.name)?.value;
+    if (!authcookie) {
+      redirect('/auth/login'); // No cookie found
+    }
+  
+    const session = await decrypt(authcookie as string | Uint8Array);
+    if (!session?.userId) {
+      redirect('/auth/login'); // Invalid or expired session
+    }
+  
+    return { userId: session.userId as string }; // Ensure userId is always a string
+  }
+
+// export async function verifySession() {
+//     const authcookie = (await cookies()).get(cookie.name)?.value
+//     const session = await decrypt(authcookie as string | Uint8Array)
+//     if (!session?.userId) {
+//         redirect('/auth/login')
+//     }
+//     return { userId: session.userId }
+
+// }
 export async function checkSessionExistOnly() {
     const authcookie = (await cookies()).get(cookie.name)?.value
     const session = await decrypt(authcookie as string | Uint8Array)
