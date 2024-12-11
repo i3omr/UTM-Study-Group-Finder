@@ -25,7 +25,9 @@ groups page: []()
 
 groups creation: []()
 
-## Sprint 1:
+
+
+## Sprint 2:
 ## Member 1 : Omar Mohammed Rezk A22EC0026
 
 delete api: [/route.ts](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/api/user/delete/route.ts)
