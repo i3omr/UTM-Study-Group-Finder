@@ -79,10 +79,19 @@ export function UserProfile({ user }: UserProfileProps) {
         bio: responseData.bio || '',
       });
       
-      toast.success('Profile updated successfully');
       setIsEditing(false);
       
-      window.location.reload();
+      toast.success('Profile updated successfully', {
+        duration: 3000,
+        position: 'top-center',
+        dismissible: true,
+        action: {
+          label: "Close",
+          onClick: () => toast.dismiss()
+        }
+      });
+      
+
     } catch (error) {
       console.error('Update error:', error);
       toast.error(error instanceof Error ? error.message : 'Failed to update profile');

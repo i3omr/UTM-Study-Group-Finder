@@ -34,16 +34,19 @@ export async function PUT(request: Request) {
         id: userId
       },
       data: updateData,
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        role: true,
-        bio: true,
+      include: {
+        groups: true
       }
     });
 
-    return NextResponse.json(updatedUser);
+    // Only return necessary fields
+    return NextResponse.json({
+      id: updatedUser.id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      role: updatedUser.role,
+      bio: updatedUser.bio,
+    });
   } catch (error) {
     console.error('Update error:', error);
     return NextResponse.json(
