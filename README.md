@@ -24,3 +24,23 @@ db prisma schema: [schema.prisma](https://github.com/i3omr/UTM-Study-Group-Finde
 groups page: []()
 
 groups creation: []()
+
+## Sprint 1:
+## Member 1 : Omar Mohammed Rezk A22EC0026
+
+delete api: [/route.ts](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/api/user/delete/route.ts)
+
+update api: [/route.ts](https://github.com/i3omr/UTM-Study-Group-Finder/tree/Omar_Mohammed_Rezk_A22EC0026/app/api/user/update/route.ts)
+
+profile page: [/page.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/app/profile/page.tsx)
+
+delete account button [/delete-account-button.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/components/delete-account-button.tsx)
+
+user profile component [/user-profile.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/components/ui/user-profile.tsx)
+
+## Member 2 : Hasan Hatem Hasan A22EC0013
+
+
+## Member 3 : Ahmed Amir Elsayed A22EC0007
+
+
