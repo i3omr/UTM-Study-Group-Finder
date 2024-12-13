@@ -1,6 +1,6 @@
 import * as React from "react"
 import { GalleryVerticalEnd } from "lucide-react"
-
+import { LogoutButton } from "@/components/ui/logout-button"
 import {
   Sidebar,
   SidebarContent,
@@ -9,13 +9,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
 
-// This is sample data.
 const data = {
   navMain: [
     {
@@ -24,10 +20,6 @@ const data = {
     },
     {
       title: "Groups",
-      url: "#",
-    },
-    {
-      title: "Logout",
       url: "#",
     }
   ],
@@ -62,19 +54,11 @@ export function Mydashboardsidebar({ ...props }: React.ComponentProps<typeof Sid
                     {item.title}
                   </a>
                 </SidebarMenuButton>
-                {item.items?.length ? (
-                  <SidebarMenuSub>
-                    {item.items.map((item) => (
-                      <SidebarMenuSubItem key={item.title}>
-                        <SidebarMenuSubButton asChild isActive={item.isActive}>
-                          <a href={item.url}>{item.title}</a>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
-                    ))}
-                  </SidebarMenuSub>
-                ) : null}
               </SidebarMenuItem>
             ))}
+            <SidebarMenuItem>
+              <LogoutButton />
+            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>

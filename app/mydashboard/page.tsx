@@ -27,7 +27,6 @@ import {
 } from "@/prisma/user/userqueries";
 import { verifySession } from "@/lib/session"; // Import verifySession
 
-
 export default async function Page() {
   // Verify session to get user ID
   const { userId } = await verifySession();
@@ -39,12 +38,13 @@ export default async function Page() {
     <SidebarProvider>
       <Mydashboardsidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b">
+        <header className="flex h-16 shrink-0 items-center gap-2 border-b justify-between">
           <div className="flex items-center gap-2 px-3">
             <SidebarTrigger />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb></Breadcrumb>
           </div>
+         
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           {
@@ -81,6 +81,7 @@ export default async function Page() {
           </div>
           <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min">
         
+          <Studentcoursetable groups={user?.groups} />
           </div>
         </div>
       </SidebarInset>

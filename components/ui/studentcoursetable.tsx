@@ -35,48 +35,21 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { MAJORenum, COURSEenum } from "@prisma/client"
 
-const data: Courses[] = [
-  {
-    id: "m5gr84i9",
-    name: "Omar",
-    status: "success",
-    email: "ken99@yahoo.com",
-  },
-  {
-    id: "m5gr84i9",
-    name: "Omar",
-    status: "success",
-    email: "ken99@yahoo.com",
-  },
-  {
-    id: "m5gr84i9",
-    name: "Omar",
-    status: "success",
-    email: "ken99@yahoo.com",
-  },
-  {
-    id: "m5gr84i9",
-    name: "Omar",
-    status: "success",
-    email: "ken99@yahoo.com",
-  },
-  {
-    id: "m5gr84i9",
-    name: "Omar",
-    status: "success",
-    email: "ken99@yahoo.com",
-  },
-]
-
-export type Courses = {
-  id: string
-  name: string
-  status: "pending" | "processing" | "success" | "failed"
-  email: string
+type GroupData = {
+  name: string;
+  major: MAJORenum;
+  createdAt: Date;
+  updatedAt: Date;
+  id: string;
+  course: COURSEenum;
+  description: string | null;
+  groupDate: Date;
+  singleTime: boolean;
 }
 
-export const columns: ColumnDef<Courses>[] = [
+export const columns: ColumnDef<GroupData>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -99,40 +72,37 @@ export const columns: ColumnDef<Courses>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  
   {
-    accessorKey: "group",
+    accessorKey: "name",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Group
+          Group Name
           <ArrowUpDown />
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
-  // {
-  //   accessorKey: "amount",
-  //   header: () => <div className="text-right">Amount</div>,
-  //   cell: ({ row }) => {
-  //     const amount = parseFloat(row.getValue("amount"))
-
-  //     // Format the amount as a dollar amount
-  //     const formatted = new Intl.NumberFormat("en-US", {
-  //       style: "currency",
-  //       currency: "USD",
-  //     }).format(amount)
-
-  //     return <div className="text-right font-medium">{formatted}</div>
-  //   },
-  // },
+  {
+    accessorKey: "course",
+    header: "Course",
+  },
+  {
+    accessorKey: "major",
+    header: "Major",
+  }
 ]
 
-export function Studentcoursetable() {
+interface StudentcoursetableProps {
+  groups?: GroupData[];
+}
+
+export function Studentcoursetable({ groups = [] }: StudentcoursetableProps) {
+  const data = groups || [];
+
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -165,9 +135,9 @@ export function Studentcoursetable() {
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter groups..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
