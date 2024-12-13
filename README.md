@@ -47,6 +47,12 @@ session : [/session.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HAS
 
 action-file : [action.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/app/actions.ts)
 
+logout : [auth.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/lib/auth.ts)
+
+logout-component : [logout-button.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/components/ui/logout-button.tsx)
+
+Api-Auth-LOGOUT : [route.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/app/api/auth/logout/route.ts)
+
 ## Member 3 : Ahmed Amir Elsayed A22EC0007
 
 
