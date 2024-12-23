@@ -56,3 +56,29 @@ Api-Auth-LOGOUT : [route.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blo
 ## Member 3 : Ahmed Amir Elsayed A22EC0007
 
 
+
+## Sprint 3:
+## Member 1 : Omar Mohammed Rezk A22EC0026
+
+admindashboard: [/admindashboard](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/app/admindashboard/page.tsx)
+
+verify-admin api: [/route.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/app/api/auth/verify-admin/route.ts)
+
+admin-card component: [/admin-card.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/components/ui/admin-card.tsx)
+
+admin groups table component: [/admin-groups-table.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/components/ui/admin-groups-table.tsx)
+
+admin users table component: [/admin-users-table.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/components/ui/admin-users-table.tsx)
+
+admin overview component [/admin-overview.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/components/ui/admin-overview.tsx)
+
+admin dashboard content [/admin-dashboard-content.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/components/admin-dashboard-content.tsx)
+
+admin sidebar conmponent [/admin-sidebard.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/components/admin-sidebar.tsx)
+
+prisma admin queries [/adminQueries.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/prisma/admin/adminQueries.ts)
+
+## Member 2 : Hasan Hatem Hasan A22EC0013
+
+
+## Member 3 : Ahmed Amir Elsayed A22EC0007
