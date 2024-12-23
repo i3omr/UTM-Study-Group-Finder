@@ -37,7 +37,7 @@ export function UserProfile({ user }: UserProfileProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validate passwords if either password field is filled
     if (formData.password || formData.confirmPassword) {
       if (formData.password !== formData.confirmPassword) {
@@ -78,20 +78,18 @@ export function UserProfile({ user }: UserProfileProps) {
         confirmPassword: '',
         bio: responseData.bio || '',
       });
-      
+
       setIsEditing(false);
-      
+
       toast.success('Profile updated successfully', {
         duration: 3000,
         position: 'top-center',
         dismissible: true,
         action: {
-          label: "Close",
-          onClick: () => toast.dismiss()
-        }
+          label: 'Close',
+          onClick: () => toast.dismiss(),
+        },
       });
-      
-
     } catch (error) {
       console.error('Update error:', error);
       toast.error(error instanceof Error ? error.message : 'Failed to update profile');
@@ -105,6 +103,7 @@ export function UserProfile({ user }: UserProfileProps) {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Name Field */}
           <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
             {isEditing ? (
@@ -119,6 +118,7 @@ export function UserProfile({ user }: UserProfileProps) {
             )}
           </div>
 
+          {/* Email Field */}
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             {isEditing ? (
@@ -134,6 +134,7 @@ export function UserProfile({ user }: UserProfileProps) {
             )}
           </div>
 
+          {/* Bio Field */}
           <div className="space-y-2">
             <Label htmlFor="bio">Academic Interests & Bio</Label>
             {isEditing ? (
@@ -151,13 +152,40 @@ export function UserProfile({ user }: UserProfileProps) {
             )}
           </div>
 
-          
+          {/* Password Fields */}
+          {isEditing && (
+            <>
+              <div className="space-y-2">
+                <Label htmlFor="password">New Password</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  placeholder="Enter new password"
+                />
+              </div>
 
+              <div className="space-y-2">
+                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Input
+                  id="confirmPassword"
+                  type="password"
+                  value={formData.confirmPassword}
+                  onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                  placeholder="Confirm new password"
+                />
+              </div>
+            </>
+          )}
+
+          {/* Role Field */}
           <div className="space-y-2">
             <Label>Role</Label>
             <p className="text-sm capitalize">{user.role}</p>
           </div>
 
+          {/* Buttons */}
           <div className="flex justify-end space-x-2 pt-4">
             {isEditing ? (
               <>
@@ -189,4 +217,4 @@ export function UserProfile({ user }: UserProfileProps) {
       </CardContent>
     </Card>
   );
-} 
+}

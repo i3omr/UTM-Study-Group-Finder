@@ -27,6 +27,15 @@ export default async function PageProfile() {
     return <div>User not found</div>;
   }
 
+  function getBreadcrumbLink() {
+    if(user.role === 'admin'){
+      return <BreadcrumbLink href="/admindashboard">Dashboard</BreadcrumbLink>
+    }
+    else{
+      return <BreadcrumbLink href="/mydashboard">Dashboard</BreadcrumbLink>
+    }
+  }
+
   return (
     <SidebarProvider>
       <Mydashboardsidebar />
@@ -38,7 +47,7 @@ export default async function PageProfile() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/mydashboard">Dashboard</BreadcrumbLink>
+                  {getBreadcrumbLink()}
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>

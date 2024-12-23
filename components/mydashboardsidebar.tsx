@@ -45,7 +45,7 @@ export function Mydashboardsidebar({ ...props }: React.ComponentProps<typeof Sid
                   <GalleryVerticalEnd className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">Student Panel - UTM Study Group Finder</span>
+                  <span className="font-semibold">UTM Study Group Finder</span>
                 </div>
               </a>
             </SidebarMenuButton>

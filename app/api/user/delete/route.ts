@@ -10,7 +10,6 @@ export async function DELETE() {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
     }
 
-    // Delete user from database
     const deletedUser = await prisma.user.delete({
       where: { id: userId }
     })

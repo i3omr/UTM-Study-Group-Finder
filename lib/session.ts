@@ -38,7 +38,7 @@ export async function createSession(userId: string,role:string) {
 
     (await cookies()).set(cookie.name, session, { ...cookie.options, sameSite: 'lax', expires })
 
-    role==='student'?redirect(`/mydashboard`):redirect(`/user/${userId}`)
+    role==='student'?redirect(`/mydashboard`):redirect('/admindashboard')
 }
 
 export async function verifySession() {
