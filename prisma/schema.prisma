@@ -15,10 +15,16 @@ model User {
   phoneNumber String?
   gender      String
   major       String
+  securityQuestion String?
+  securityAnswer   String?
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
   role        ROLEenum      @default(student)
   groups      Group[]       @relation("GroupMembers")
+  resetToken       String?   @unique
+  resetTokenExpiry DateTime?
+  twoFactorCode    String?
+  twoFactorExpiry  DateTime?
 }
 
 

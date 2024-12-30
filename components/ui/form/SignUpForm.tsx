@@ -15,6 +15,13 @@ import { Input } from '../input';
 import { Button } from '../button';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 const FormSchema = z
   .object({
@@ -28,6 +35,8 @@ const FormSchema = z
     major: z.string().min(1, 'Major is required'),
     phoneNumber: z.string().min(1, 'phone number is required'),
     gender:z.string().min(1, 'gender is required'),
+    securityQuestion: z.string().min(1, 'Security question is required'),
+    securityAnswer: z.string().min(1, 'Security answer is required'),
   })
   
 
@@ -36,6 +45,17 @@ const FormSchema = z
     message: 'Password do not match',
   })
 
+const securityQuestions = [
+  "What was your first pet's name?",
+  "In which city were you born?",
+  "What is your favorite color?",
+  "What is your favorite food?",
+  "What is your favorite movie?",
+  "What is your favorite book?",
+  "What is your favorite sport?",
+  "What is your favorite game?",
+  "What is your favorite hobby?",
+];
 
 const SignUpForm = () => {
   const router = useRouter();
@@ -49,6 +69,8 @@ const SignUpForm = () => {
       phoneNumber: '',
       major: '',
       gender: '',
+      securityQuestion: '',
+      securityAnswer: '',
     },
   });
 
@@ -66,6 +88,8 @@ const SignUpForm = () => {
           phoneNumber: values.phoneNumber,
           major: values.major,
           gender: values.gender,
+          securityQuestion: values.securityQuestion,
+          securityAnswer: values.securityAnswer,
         }),
       });
   
@@ -176,6 +200,44 @@ const SignUpForm = () => {
   )}
 />
 
+<FormField
+  control={form.control}
+  name="securityQuestion"
+  render={({ field }) => (
+    <FormItem>
+      <FormLabel>Security Question</FormLabel>
+      <br/>
+      <FormControl>
+        <select {...field} className="input">
+          <option value="">Select a security question</option>
+          {securityQuestions.map((question, index) => (
+            <option key={index} value={question}>
+              {question}
+            </option>
+          ))}
+        </select>
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
+<FormField
+  control={form.control}
+  name="securityAnswer"
+  render={({ field }) => (
+    <FormItem>
+      <FormLabel>Security Answer</FormLabel>
+      <FormControl>
+        <Input
+          placeholder="Enter your answer"
+          {...field}
+        />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
 
           <FormField
             control={form.control}

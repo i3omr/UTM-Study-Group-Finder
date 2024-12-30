@@ -3,7 +3,7 @@ import { decrypt } from './lib/session';
 import { cookies } from 'next/headers';
 
 export default async function middleware(req: NextRequest) {
-  const protectedRoutes = ['/dashboard'];
+  const protectedRoutes = ['/mydashboard'];
   const currentPath = req.nextUrl.pathname.replace(/\/$/, ''); // Remove trailing slash
   const isProtectedRoute = protectedRoutes.includes(currentPath);
 

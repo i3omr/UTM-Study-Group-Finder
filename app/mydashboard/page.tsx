@@ -1,3 +1,4 @@
+import { LogoutButton } from "@/components/ui/logout-button";
 import { Mydashboardsidebar } from "@/components/mydashboardsidebar";
 import { prisma } from "@/util/prisma";
 import {
@@ -44,7 +45,9 @@ export default async function Page() {
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb></Breadcrumb>
           </div>
-         
+          <div className="px-3">
+            <LogoutButton />
+          </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           {

@@ -7,9 +7,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { name, email, password, phoneNumber, gender, major } = req.body;
+  const { name, email, password, phoneNumber, gender, major, securityQuestion, securityAnswer } = req.body;
 
-  if (!name || !email || !password ||!phoneNumber || !gender || !major) {
+  if (!name || !email || !password ||!phoneNumber || !gender || !major || !securityQuestion || !securityAnswer) {
     return res.status(400).json({ message: 'All fields are required' });
   }
 
@@ -24,6 +24,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         name,
         email,
         password: hashedPassword,
+        securityQuestion,
+        securityAnswer,
       },
     });
 

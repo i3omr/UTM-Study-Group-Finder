@@ -2,17 +2,26 @@
 
 import * as React from "react"
 import { Button } from "@/components/ui/button"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import { LogOut } from "lucide-react" // Make sure to install lucide-react
 
 export function LogoutButton() {
   const [isLoading, setIsLoading] = React.useState(false)
 
   const handleLogout = async () => {
-    if (!confirm('Are you sure you want to logout?')) return
-
     try {
       setIsLoading(true)
       
-      // Call logout API
       const response = await fetch('/api/auth/logout', {
         method: 'POST',
         credentials: 'include',
@@ -35,13 +44,31 @@ export function LogoutButton() {
   }
 
   return (
-    <Button 
-      variant="ghost" 
-      className="w-full justify-start"
-      onClick={handleLogout}
-      disabled={isLoading}
-    >
-      {isLoading ? 'Logging out...' : 'Logout'}
-    </Button>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button variant="ghost" size="sm" className="w-full justify-start gap-2">
+          <LogOut className="h-4 w-4" />
+          Logout
+        </Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you sure you want to logout?</AlertDialogTitle>
+          <AlertDialogDescription>
+            You will be redirected to the login page.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction 
+            onClick={handleLogout}
+            disabled={isLoading}
+            className="bg-red-500 hover:bg-red-600"
+          >
+            {isLoading ? "Logging out..." : "Logout"}
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   )
 } 

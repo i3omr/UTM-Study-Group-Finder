@@ -5,18 +5,26 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export async function POST(request: NextRequest) {
   try {
-    // Parse the incoming JSON request body
-    const { name, email, password, phoneNumber, gender, major } = await (request as NextRequest).json();
+    // Update the destructuring to include security fields
+    const { 
+      name, 
+      email, 
+      password, 
+      phoneNumber, 
+      gender, 
+      major,
+      securityQuestion,
+      securityAnswer 
+    } = await request.json();
 
-    // Validate that all required fields are present
-    if (!name || !email || !password ||!phoneNumber || !gender || !major ) {
+    // Update validation to include security fields
+    if (!name || !email || !password || !phoneNumber || !gender || !major || !securityQuestion || !securityAnswer) {
       return NextResponse.json(
         { status: "error", message: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    // Check if the user already exists
     const existingUser = await prisma.user.findUnique({
       where: { email },
     });
@@ -31,10 +39,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Hash the password before storing it
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create the new user in the database
+    // Include security fields in user creation
     const newUser = await prisma.user.create({
       data: {
         phoneNumber,
@@ -43,11 +50,11 @@ export async function POST(request: NextRequest) {
         name,
         email,
         password: hashedPassword,
-       
+        securityQuestion,
+        securityAnswer,
       },
     });
 
-    // Return success response
     return NextResponse.json(
       { status: "success", message: "User registered successfully", user: newUser },
       { status: 200 }
