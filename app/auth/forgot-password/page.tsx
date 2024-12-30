@@ -51,7 +51,6 @@ export default function ForgotPasswordPage() {
     setStatus('loading')
 
     try {
-      // First verify security answer
       const verifyResponse = await fetch("/api/verify-security-answer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -66,7 +65,6 @@ export default function ForgotPasswordPage() {
         return;
       }
 
-      // If verified, send reset email
       const response = await fetch("/api/send-reset-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

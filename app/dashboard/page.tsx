@@ -1,4 +1,5 @@
 import { AppSidebar } from "@/components/app-sidebar"
+import { Mydashboardsidebar } from "@/components/mydashboardsidebar"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,6 +10,7 @@ import {
 } from "@/components/ui/breadcrumb"
 import { Card } from "@/components/ui/card"
 import { DataTable } from "@/components/ui/datatable"
+import { LogoutButton } from "@/components/ui/logout-button"
 import { Mycomponent } from "@/components/ui/mycomponent"
 import { Separator } from "@/components/ui/separator"
 import {
@@ -16,40 +18,60 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { Studentcoursetable } from "@/components/ui/studentcoursetable"
+import Useroverview from "@/components/ui/useroverview"
+import { getNumberOfGroupsForUser, getNumberOfGroups, getNumberOfUsers } from "@/prisma/user/userqueries"
 
 export default function Page() {
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <Mydashboardsidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b">
+        <header className="flex h-16 shrink-0 items-center gap-2 border-b justify-between">
           <div className="flex items-center gap-2 px-3">
             <SidebarTrigger />
             <Separator orientation="vertical" className="mr-2 h-4" />
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
+            <Breadcrumb></Breadcrumb>
+          </div>
+          <div className="px-3">
+            <LogoutButton />
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3 "> 
-            <div className=" aspect-video rounded-xl bg-muted/50" > <Mycomponent text1={"User Count"} text2={"Live Count"} usercount={"23"}/>  </div>
-            <div className=" aspect-video rounded-xl bg-muted/50" > <Mycomponent text1={"User Online"} text2={"Live Count"} usercount={"30"}/> </div>
-            <div className=" aspect-video rounded-xl bg-muted/50" > <Mycomponent text1={"Study Groups"} text2={"Live Count"} usercount={"5"}/> </div>
+          {
+            <Useroverview name={""}              /* email={user.email} major={user.major} */
+            />
+          }
+          <br />
+          <div className="grid auto-rows-min gap-4 md:grid-cols-3 ">
+            {
+              <div className=" aspect-video rounded-xl bg-muted/50 font-bold">
+                <Mycomponent
+                  text1={"My Active Study Groups"}
+                  text2={"Live Count"}
+                />
+              </div>
+            }
+            <div className=" aspect-video rounded-xl bg-muted/50  font-bold">
+              <Mycomponent
+                text1={"Study Groups Available"}
+                text2={"Live Count"}
+                usercount={getNumberOfGroups()}
+              />
+            </div>
+            <div className=" aspect-video rounded-xl bg-muted/50  font-bold">
+              <Mycomponent
+                text1={"Number Of Users"}
+                text2={"Live Count"}
+                usercount={getNumberOfUsers()}
+              />
+            </div>
           </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min"> <DataTable /> </div>
+          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min">
+        
+          </div>
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

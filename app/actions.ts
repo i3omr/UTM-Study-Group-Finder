@@ -20,7 +20,6 @@ export async function login(prevState: any, formData: FormData): Promise<any> {
     const password = formData.get('password')?.toString();
     const code = formData.get('code')?.toString();
 
-    // Verification step
     if (code) {
       const cookieStore = await cookies();
       const storedData = cookieStore.get('auth_verification')?.value;
@@ -40,7 +39,6 @@ export async function login(prevState: any, formData: FormData): Promise<any> {
       return { success: true };
     }
 
-    // Initial login step
     if (!email || !password) {
       return { errors: 'Email and password are required' };
     }
@@ -58,10 +56,8 @@ export async function login(prevState: any, formData: FormData): Promise<any> {
       return { errors: 'Invalid email or password' };
     }
 
-    // Generate verification code
     const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
     
-    // Store verification data in cookie
     const cookieStore = await cookies();
     cookieStore.set('auth_verification', JSON.stringify({
       userId: user.userId,
@@ -75,7 +71,6 @@ export async function login(prevState: any, formData: FormData): Promise<any> {
       sameSite: 'lax'
     });
 
-    // Send verification email
     await transporter.sendMail({
       from: '"Study Group Finder" <noreply@studygroup.com>',
       to: email,

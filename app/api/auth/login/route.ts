@@ -48,16 +48,16 @@ export async function POST(request: Request) {
       // Cleanup and set session
       verificationStore.delete(email);
       const response = NextResponse.json({ success: true });
-      response.cookies.set('user_id', storedData.userId, { httpOnly: true });
-      response.cookies.set('role', storedData.role, { httpOnly: true });
-
+      response.cookies.set('user_id', storedData.userId, { httpOnly: true, path: '/' });
+response.cookies.set('role', storedData.role, { httpOnly: true, path: '/' });
+      
       return response;
     }
-
     // Initial login step
     if (!email || !password) {
       return NextResponse.json({ errors: 'Email and password required' }, { status: 400 });
     }
+  
 
     const user = await prisma.user.findUnique({
       where: { email },
