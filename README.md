@@ -79,6 +79,24 @@ admin sidebar conmponent [/admin-sidebard.tsx](https://github.com/i3omr/UTM-Stud
 prisma admin queries [/adminQueries.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/Omar_Mohammed_Rezk_A22EC0026/prisma/admin/adminQueries.ts)
 
 ## Member 2 : Hasan Hatem Hasan A22EC0013
+forgot password page : [/page.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/app/auth/forgot-password/page.tsx)
+
+reset-password page : [/page.tsx](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/app/auth/reset-password/page.tsx)
+
+2FA login-api: [/route.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/app/api/auth/login/route.ts)
+
+api get-security-question : [/route.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/app/api/get-security-question/route.ts)
+
+api reset-password : [/route.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/app/api/reset-password/route.ts)
+
+api send-reset-email : [/route.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/app/api/send-reset-email/route.ts)
+
+api update-password : [route.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/app/api/update.password/route.ts)
+
+api verify-security-answer : [route.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/app/api/verify-security-answer/route.ts)
+
+updated action.ts : [action.ts](https://github.com/i3omr/UTM-Study-Group-Finder/blob/HASAN_HATEM_HATEM_A22EC0013/app/actions.ts)
+
 
 
 ## Member 3 : Ahmed Amir Elsayed A22EC0007
