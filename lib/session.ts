@@ -18,6 +18,7 @@ const cookie = {
     options: { httpOnly: true, secure: true, sameSite: 'lax', path: '/' },
     duration: 24 * 60 * 60 * 1000
 }
+
 export async function encrypt(payload: SessionType) {
     return new SignJWT(payload).setProtectedHeader({ alg: 'HS256' }).setIssuedAt().setExpirationTime('1day').sign(key)
 }
@@ -38,7 +39,7 @@ export async function createSession(userId: string,role:string) {
 
     (await cookies()).set(cookie.name, session, { ...cookie.options, sameSite: 'lax', expires })
 
-    role==='student'?redirect(`/mydashboard`):redirect('/admindashboard')
+    return { redirectTo: role === 'student' ? '/mydashboard' : '/admindashboard' };
 }
 
 export async function verifySession() {

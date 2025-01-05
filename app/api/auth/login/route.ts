@@ -3,6 +3,7 @@ import { prisma } from "@/util/prisma";
 import { compareSync } from "bcrypt-ts";
 import nodemailer from "nodemailer";
 import { createSession } from "@/lib/session"; // Import createSession
+import { root } from 'postcss';
 
 // Simple in-memory store for verification codes
 const verificationStore = new Map<string, {
@@ -52,8 +53,8 @@ export async function POST(request: Request) {
       // Create a session with the user's ID and role
       await createSession(storedData.userId, storedData.role);
 
-      // Return a success response
-      return NextResponse.json({ success: true });
+      // Return a success response without redirecting
+      return NextResponse.json({ success: true,role: storedData.role, });
     }
 
     // Initial login step

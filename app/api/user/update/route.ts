@@ -8,7 +8,6 @@ export async function PUT(request: Request) {
     const { userId } = await verifySession();
     const body = await request.json();
 
-    // Validate the input
     if (!body.name || !body.email) {
       return NextResponse.json(
         { error: "Name and email are required" },
@@ -16,14 +15,12 @@ export async function PUT(request: Request) {
       );
     }
 
-    // Prepare update data
     const updateData: any = {
       name: body.name,
       email: body.email,
       bio: body.bio,
     };
 
-    // If password is provided, hash it
     if (body.password) {
       const salt = genSaltSync(11);
       updateData.password = hashSync(body.password, salt);
@@ -39,7 +36,6 @@ export async function PUT(request: Request) {
       }
     });
 
-    // Only return necessary fields
     return NextResponse.json({
       id: updatedUser.id,
       name: updatedUser.name,

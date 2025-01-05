@@ -26,10 +26,10 @@ model User {
   email             String    @unique
   name              String
   password          String
-  role              ROLEenum
+  role              ROLEenum @default(student)
   bio               String?   @db.Text
   groups            Group[]   @relation("GroupMembers")
-  phone             String?
+  phoneNumber             String?
   major             MAJORenum
   gender            String?
   securityQuestion String?
