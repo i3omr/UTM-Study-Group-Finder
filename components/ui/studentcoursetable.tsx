@@ -8,6 +8,7 @@ type Group = {
   id: string;
   course: string;
   name: string;
+  topic: string;
   description: string | null; // description can be null
 };
 
@@ -70,9 +71,9 @@ export const Studentcoursetable: React.FC<StudentcoursetableProps> = ({ groups }
               Course Name
               {sortConfig.key === "course" && (sortConfig.direction === "ascending" ? " ▲" : " ▼")}
             </TableHead>
-            <TableHead onClick={() => handleSort("name")} className="font-bold">
+            <TableHead onClick={() => handleSort("topic")} className="font-bold">
               Group Name
-              {sortConfig.key === "name" && (sortConfig.direction === "ascending" ? " ▲" : " ▼")}
+              {sortConfig.key === "topic" && (sortConfig.direction === "ascending" ? " ▲" : " ▼")}
             </TableHead>
             <TableHead onClick={() => handleSort("description")} className="font-bold">
               Group Description
@@ -86,7 +87,7 @@ export const Studentcoursetable: React.FC<StudentcoursetableProps> = ({ groups }
             sortedGroups.map((group) => (
               <TableRow key={group.id}>
                 <TableCell>{group.course}</TableCell>
-                <TableCell>{group.name}</TableCell>
+                <TableCell>{group.topic}</TableCell>
                 <TableCell>{group.description ?? "No description available"}</TableCell>
                 <TableCell>
                   {/* Add a "View" button */}

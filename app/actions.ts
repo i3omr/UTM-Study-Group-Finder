@@ -69,7 +69,7 @@ export async function deleteGroup(groupId: string) {
 }
 
 export async function updateGroup(groupId: string, data: {
-  name?: string;
+  topic?: string;
   course?: string;
   description?: string;
   maxMembers?: number;
@@ -83,7 +83,7 @@ export async function updateGroup(groupId: string, data: {
     const updatedGroup = await prisma.group.update({
       where: { id: groupId },
       data: {
-        ...(data.name && { name: data.name }),
+        ...(data.topic && { topic: data.topic }),
         ...(data.course && { course: data.course }),
         ...(data.description && { description: data.description }),
         ...(maxMembersNum && { maxMembers: maxMembersNum }),

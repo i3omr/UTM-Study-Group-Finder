@@ -58,7 +58,7 @@ export async function getUserInfo(userId: string) {
       groups: {
         select: {
           id: true,
-          name: true,
+          topic: true,
           description: true,
           createdAt: true,
           updatedAt: true,

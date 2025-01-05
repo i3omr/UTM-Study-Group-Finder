@@ -32,7 +32,7 @@ interface Member {
 
 interface Group {
   id: string;
-  name: string;
+  topic: string;
   course: string;
   description: string;
   members: Member[];
@@ -43,7 +43,7 @@ export function AdminGroupsTable({ groups }: { groups: Group[] }) {
   const [editingGroup, setEditingGroup] = useState<Group | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
+    topic: '',
     course: '',
     description: '',
   });
@@ -58,7 +58,7 @@ export function AdminGroupsTable({ groups }: { groups: Group[] }) {
   const handleEditGroup = (group: Group) => {
     setEditingGroup(group);
     setFormData({
-      name: group.name || '',
+      topic: group.topic || '',
       course: group.course || '',
       description: group.description || '',
     });
@@ -71,7 +71,7 @@ export function AdminGroupsTable({ groups }: { groups: Group[] }) {
     setIsSubmitting(true);
     try {
       const result = await updateGroup(editingGroup.id, {
-        name: formData.name,
+        topic: formData.topic,
         course: formData.course,
         description: formData.description,
       });
@@ -107,7 +107,7 @@ export function AdminGroupsTable({ groups }: { groups: Group[] }) {
         <TableBody>
           {groups.map((group) => (
             <TableRow key={group.id}>
-              <TableCell>{group.name}</TableCell>
+              <TableCell>{group.topic}</TableCell>
               <TableCell>{group.course}</TableCell>
               <TableCell>{group.members?.length || 0}</TableCell>
               <TableCell>{new Date(group.createdAt).toLocaleDateString()}</TableCell>
@@ -143,9 +143,9 @@ export function AdminGroupsTable({ groups }: { groups: Group[] }) {
             <div className="grid gap-2">
               <Label htmlFor="name">Group Name</Label>
               <Input
-                id="name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                id="topic"
+                value={formData.topic}
+                onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
               />
             </div>
             <div className="grid gap-2">
