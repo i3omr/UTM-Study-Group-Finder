@@ -91,9 +91,13 @@ export const Studentcoursetable: React.FC<StudentcoursetableProps> = ({ groups }
                 <TableCell>{group.description ?? "No description available"}</TableCell>
                 <TableCell>
                   {/* Add a "View" button */}
-                  <Button onClick={() => handleView(group.id)} className="text-blue-500 bg-white hover:bg-gray-300">
-                    View
-                  </Button>
+                  <Button
+  onClick={() => router.push('/groups')} // Navigate to /groups
+  className="text-blue-500 bg-white hover:bg-gray-300"
+  title="View Group"
+>
+  View
+</Button>
                 </TableCell>
               </TableRow>
             ))

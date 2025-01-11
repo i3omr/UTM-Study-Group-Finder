@@ -1,11 +1,19 @@
+import { redirect } from "next/navigation";
 import { prisma } from "@/util/prisma";
 import { verifySession } from "@/lib/session";
 import { AdminDashboardContent } from "@/components/admin-dashboard-content";
+import { getUserInfo } from "@/prisma/user/userqueries";
 
 export default async function AdminDashboardPage() {
-  // Verify session and check if user is admin
+  // Verify session and get user details
   const { userId } = await verifySession();
+  const user = await getUserInfo(userId);
+  if(user?.role!=='admin'){
+    redirect("/mydashboard");
+  }
   
+  
+
   // Fetch all users and groups for admin
   const users = await prisma.user.findMany({
     include: {

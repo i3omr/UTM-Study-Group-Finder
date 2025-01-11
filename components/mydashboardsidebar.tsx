@@ -1,5 +1,5 @@
-import * as React from "react"
-import { GalleryVerticalEnd } from "lucide-react"
+import * as React from "react";
+import { GalleryVerticalEnd } from "lucide-react";
 
 import {
   Sidebar,
@@ -13,27 +13,39 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import { verifySession } from "@/lib/session";
+import { getUserInfo } from "@/prisma/user/userqueries";
+import { redirect } from "next/navigation";
 
-// This is sample data.
-const data = {
-  navMain: [
-    {
-      title: "Profile",
-      url: "/profile",
-    },
-    {
-      title: "Groups",
-      url: "#",
-    },
-    {
-      title: "Logout",
-      url: "/logout",
-    }
-  ],
-}
+export function Mydashboardsidebar({ role, ...props }: React.ComponentProps<typeof Sidebar> & { role?: string }) {
 
-export function Mydashboardsidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+
+  const data = {
+    navMain: [
+      {
+        title: "Profile",
+        url: "/profile",
+      },
+      {
+        title: "Groups",
+        url: "/groups",
+      },
+      {
+        title: "Dashboard",
+        url: "/mydashboard",
+      },
+      {
+        title: "Admin Dashboard",
+        url: "/admindashboard",
+      },
+      {
+        title: "Logout",
+        url: "/logout",
+      },
+    ],
+  };
+
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -80,5 +92,5 @@ export function Mydashboardsidebar({ ...props }: React.ComponentProps<typeof Sid
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
