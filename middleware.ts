@@ -2,7 +2,7 @@ import { type NextRequest,NextResponse } from "next/server";
 import { decrypt } from "./lib/session";
 import { cookies } from "next/headers";
 export default async function middleware(req:NextRequest) {
-  const protectedRoutes = ['','/dashboard']
+  const protectedRoutes = ['']
   const currentPath = req.nextUrl.pathname
   const isProtectedRoute = protectedRoutes.includes(currentPath)
 

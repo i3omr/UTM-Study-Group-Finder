@@ -19,33 +19,40 @@ enum MAJORenum {
   ComputerScienceMultiMedia
 }
 
-enum COURSEenum {
-  ArtificialIntelligence
-  Network
-}
 
 // Models
 model User {
-  id          String   @id @default(uuid())
-  email       String   @unique
-  name        String 
-  password    String
-  phone       String?
-  major       MAJORenum
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  role        ROLEenum @default(student)
-  groups      Group[]  @relation("GroupMembers")
+  id                String    @id @default(cuid())
+  email             String    @unique
+  name              String
+  password          String
+  role              ROLEenum @default(student)
+  bio               String?   @db.Text
+  groups            Group[]   @relation("GroupMembers")
+  phoneNumber             String?
+  major             MAJORenum
+  gender            String?
+  securityQuestion String?
+  securityAnswer   String?
+  resetToken String?
+  resetTokenExpiry   DateTime?
+  twoFactorCode String?
+  twoFactorExpiry   DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 }
 
 model Group {
   id          String    @id @default(uuid())
-  course      COURSEenum
+  course      String?
   description String?
-  name        String
+  topic       String?
+  eventTitle  String?
+  eventDate   String?
+  resourcesName   String?
+  resourcesLink   String?
   members     User[]    @relation("GroupMembers")
   groupDate   DateTime
-  singleTime  Boolean
   major       MAJORenum
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt

@@ -5,13 +5,21 @@ import { genSaltSync, hashSync } from "bcrypt-ts";
 
 type CreateUserInput = Pick<User, 'email' | 'password'>;
 export async function createUser(data: CreateUserInput) {
-  let salt = genSaltSync(11);
-  let hash = hashSync(data.password, salt);
-  
   try {
-    return await prisma.user.create({ data: { ...data, password: hash, role: "student", name:"Omar",major:"ComputerScienceNetworkAndSecurity"}});
+    const salt = genSaltSync(11);
+    const hash = hashSync(data.password, salt);
+    
+    return await prisma.user.create({ 
+      data: { 
+        email: data.email,
+        password: hash,
+        name: "New User", // Default name
+        major: "ComputerScienceNetworkAndSecurity", // Default major
+        role: "student"
+      }
+    });
   } catch (error) {
-    console.error("Failed to create user in database");
+    console.error("Create user error:", error);
     throw error;
   }
 }
@@ -41,13 +49,24 @@ export async function getNumberOfGroupsForUser(userId: string) {
   return groupCount;
 }
 
-export async function getUserInfo(userId:string){
+export async function getUserInfo(userId: string) {
   const userInfo = await prisma.user.findUnique({
-    where:{
+    where: {
       id: userId
-    }, include:{
-      groups: true,
+    },
+    include: {
+      groups: {
+        select: {
+          id: true,
+          topic: true,
+          description: true,
+          createdAt: true,
+          updatedAt: true,
+          course: true,
+          major: true
+        }
+      }
     }
-  })
+  });
   return userInfo;
 }

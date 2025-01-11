@@ -8,7 +8,7 @@ interface UserOverviewProps {
   export default function Useroverview({ name /* email, major */ }: UserOverviewProps) {
     return (
       <div>
-        <h1 className="text-2xl	">Hello, {name}!</h1>
+        <h1 className="text-2xl font-bold">Hello, {name}!</h1>
         {/* <h4>{email}</h4>
         <p>{major}</p> */}
       </div>
