@@ -282,9 +282,9 @@ const SignUpForm = () => {
         or
       </div>
       <p className='text-center text-sm text-gray-600 mt-2'>
-        If you don&apos;t have an account, please&nbsp;
+        If you have an account, please&nbsp;
         <Link className='text-blue-500 hover:underline' href='/auth/login'>
-          Sign in
+          Login in
         </Link>
       </p>
     </Form>
