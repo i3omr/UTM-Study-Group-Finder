@@ -58,7 +58,7 @@ export default function Home() {
         alert('Please log in to join groups');
         return;
       }
-
+  
       const response = await fetch(`/api/groups/${groupId}/join`, {
         method: 'POST',
         headers: {
@@ -67,33 +67,34 @@ export default function Home() {
         credentials: 'include',
         body: JSON.stringify({ userId: currentUser.id })
       });
-
+  
       const data = await response.json();
-
       if (!response.ok) {
         throw new Error(data.error || 'Failed to join group');
       }
-
-      setGroups((prevGroups) =>
-        prevGroups.map((group) =>
-          group.id === groupId ? data : group
-        )
-      );
-      
+  
+      setGroups(prevGroups => {
+        const updatedGroups = prevGroups.map(group =>
+          group.id === groupId ? { ...group, members: data.members } : group
+        );
+        console.log("Updated Groups after Join:", updatedGroups);
+        return updatedGroups;
+      });
+  
       alert('You have joined the group!');
     } catch (error) {
       console.error('Error joining group:', error);
       alert(error.message || 'Failed to join group. Please try again.');
     }
   };
-
+  
   const handleExitGroup = async (groupId) => {
     try {
       if (!currentUser?.id) {
         alert('Please log in to perform this action');
         return;
       }
-
+  
       const response = await fetch(`/api/groups/${groupId}/exit`, {
         method: 'POST',
         headers: {
@@ -102,25 +103,27 @@ export default function Home() {
         credentials: 'include',
         body: JSON.stringify({ userId: currentUser.id })
       });
-
+  
       const data = await response.json();
-
+      console.log("Exit group response: ", data);  // Add this log to check the response
+  
       if (!response.ok) {
         throw new Error(data.error || 'Failed to exit group');
       }
-
+  
       setGroups((prevGroups) =>
         prevGroups.map((group) =>
-          group.id === groupId ? data : group
+          group.id === groupId ? { ...group, members: data.members } : group
         )
       );
-      
+  
       alert('You have exited the group!');
     } catch (error) {
       console.error('Error exiting group:', error);
       alert(error.message || 'Failed to exit group. Please try again.');
     }
   };
+  
 
   const handleHideGroup = (groupId) => {
     setHiddenGroups((prev) => ({ ...prev, [groupId]: true }));
@@ -152,9 +155,12 @@ export default function Home() {
 
       setGroups((prevGroups) =>
         prevGroups.map((group) =>
-          group.id === groupId ? data : group
+          group.id === groupId ? { ...group, members: data.members } : group
         )
       );
+      
+      console.log("Updated groups after join/exit: ", groups);
+      
 
       alert('Event added successfully!');
     } catch (error) {
@@ -522,13 +528,14 @@ export default function Home() {
     group.resources.map((resource, index) => (
       <li key={index} className="border-b py-2">
         <a
-          href={resource.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 underline"
-        >
-          {resource.name}
-        </a>
+  href={resource.link.startsWith('http') ? resource.link : `https://${resource.link}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-blue-600 underline"
+>
+  {resource.name}
+</a>
+
         {isUserMemberOfGroup(group) && (
           <>
             <button

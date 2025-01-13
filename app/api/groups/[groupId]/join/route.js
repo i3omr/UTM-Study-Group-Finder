@@ -1,11 +1,7 @@
-// app/api/groups/[groupId]/join/route.js
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
-
 export async function POST(request, { params }) {
   try {
     const { userId } = await request.json();
+    console.log("User joining group:", userId);  // Log the userId being passed
     const groupId = params.groupId;
 
     // Add the user to the group
