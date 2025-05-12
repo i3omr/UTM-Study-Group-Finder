@@ -1,4 +1,7 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+The "UTM Study Group Finder" app is intended to facilitate among students collaborative
+learning by joining them together according to shared courses, interests and schedules. The app
+helps tackle the problem of academic isolation by allowing users to form groups that are as
+varied as they can be and to share resources with each other, motivate each other, etc.
 
 ## Sprint 1:
 ## Member 1 : Omar Mohammed Rezk A22EC0026
